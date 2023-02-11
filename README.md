@@ -1,7 +1,7 @@
-Device tree for the OnePlus Nord 2 5G (denniz)
+Device tree for the OnePlus Nord 2 5G (karen)
 =================================================
 
-The OnePlus Nord 2 5G Codename is denniz 
+The OnePlus Nord 2 5G Codename is karen 
 
 | Basic                   | Spec Sheet                                                                                                                     |
 | -----------------------:|:------------------------------------------------------------------------------------------------------------------------------ |

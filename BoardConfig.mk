@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/oneplus/denniz
+DEVICE_PATH := device/oneplus/karen
 
 # Architecture
 TARGET_ARCH := arm64
@@ -45,11 +45,11 @@ BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 
 # Assertation
-TARGET_OTA_ASSERT_DEVICE := denniz,OP515BL1
+TARGET_OTA_ASSERT_DEVICE := karen,OP557AL1
 
 # Bootloader
 TARGET_BOARD_PLATFORM := mt6893
-TARGET_BOOTLOADER_BOARD_NAME := oplus6893
+TARGET_BOOTLOADER_BOARD_NAME := k6893v1_64
 TARGET_NO_BOOTLOADER := true
 
 # Build system
@@ -62,8 +62,8 @@ RELAX_USES_LIBRARY_CHECK := true
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_oneplus_denniz
-TARGET_RECOVERY_DEVICE_MODULES := init_oneplus_denniz
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_oneplus_karen
+TARGET_RECOVERY_DEVICE_MODULES := init_oneplus_karen
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
@@ -81,13 +81,13 @@ BOARD_BOOT_HEADER_VERSION := 2
 
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
-TARGET_KERNEL_CONFIG := denniz_defconfig
+TARGET_KERNEL_CONFIG := karen_defconfig
 TARGET_KERNEL_ADDITIONAL_FLAGS := KBUILD_BUILD_USER="SakilMondal" KBUILD_BUILD_HOST=Compiler
 TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CLANG_VERSION := proton
 TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/proton
-TARGET_KERNEL_SOURCE := kernel/oneplus/denniz
+TARGET_KERNEL_SOURCE := kernel/oneplus/karen
 
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
@@ -158,4 +158,4 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # UDFPS
-TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.denniz
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.karen
