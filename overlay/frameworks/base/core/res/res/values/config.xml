@@ -241,18 +241,16 @@
 
     <!-- Maximum screen brightness allowed by the power manager.
          The user is forbidden from setting the brightness above this level -->
-    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">0.95</item>
-    
-    <!-- Note: This setting is deprecated, please use
-         config_screenBrightnessSettingMaximumFloat instead -->
-    <integer name="config_screenBrightnessSettingMaximum">250</integer>
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
 
     <!-- Default screen brightness setting
          Must be in the range specified by minimum and maximum. -->
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.29019607843</item>
 
-    <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
-    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+    <!-- Screen brightness used to dim the screen while dozing in a very low power state.
+         May be less than the minimum allowed brightness setting
+         that can be set by the user. -->
+    <integer name="config_screenBrightnessDoze">17</integer>
 
     <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
          for debouncing the light sensor.  Different constants are used to debounce the light sensor
@@ -644,11 +642,13 @@
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/arm64/boot-framework.oat"</item>
         <item>"/system/framework/framework.jar"</item>
+        <item>"/system/framework/oat/arm64/services.odex"</item>
         <item>"/system/framework/services.jar"</item>
         <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
         <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
+        <item>"/system_ext/priv-app/SystemUI/oat/arm64/SystemUI.odex"</item>
         <item>"/system/bin/surfaceflinger"</item>
     </string-array>
 
@@ -661,6 +661,19 @@
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
         <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
         <item>"/system/lib64/libsurfaceflinger.so"</item>
+    </string-array>
+
+    <!-- Values for GPS configuration -->
+    <string-array name="config_gpsParameters">
+        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>SUPL_VER=0x20000</item>
+        <item>SUPL_MODE=1</item>
+        <item>SUPL_ES=1</item>
+        <item>LPP_PROFILE=0</item>
+        <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=1</item>
+        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
+        <item>GPS_LOCK=0</item>
     </string-array>
 
     <!-- An Array of "[Connection name],[ConnectivityManager.TYPE_xxxx],
@@ -856,11 +869,11 @@
 
     <!-- The max scale for the wallpaper when it's zoomed in -->
     <item name="config_wallpaperMaxScale" format="float" type="dimen">1</item>
-    
-     <!-- Configure mobile tcp buffer sizes in the form:
-         rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
-         If no value is found for the rat-name in use, the system default will be applied.
->>>>>>> c9cdf9a... sm8250-common: Enable Adaptive Sleep / Screen Attention
+
+    <!-- The component name, flattened to a string, for the default autofill service
+         to  enabled for an user. This service must be trusted, as it can be activated
+         without explicit consent of the user. If no autofill service with the
+          specified name exists on the device, autofill will be disabled by default.
     -->
     <string name="config_defaultAutofillService" translatable="false">com.google.android.gms/.autofill.service.AutofillService</string>
 
@@ -870,25 +883,4 @@
 
     <!-- True if Unprocessed audio source supports the required frequency range and level -->
     <bool name="config_supportAudioSourceUnprocessed">true</bool>
-
-    <!-- Determines whether the shell features all run on another thread. -->
-    <bool name="config_enableShellMainThread">true</bool>
-    
-    <!-- Allow devices override audio panel location to the left side -->
-    <bool name="config_audioPanelOnLeftSide">true</bool>
-    
-    <!-- Flag indicating whether we should enable the adaptive sleep.-->
-    <bool name="config_adaptive_sleep_available">true</bool>
-
-    <!-- The component name for the default system attention service.
-         This service must be trusted, as it can be activated without explicit consent of the user.
-         See android.attention.AttentionManagerService.
-    -->
-    <string name="config_defaultAttentionService" translatable="false">com.google.android.as/com.google.android.apps.miphone.aiai.attention.service.AiAiAttentionService</string>
-
-    <!-- Whether the device enable the standalone (SA) mode of 5G NR.-->
-    <bool name="config_telephony5gStandalone">true</bool>
-
-    <!-- Whether the device enable the non-standalone (NSA) mode of 5G NR.-->
-    <bool name="config_telephony5gNonStandalone">true</bool>
 </resources>
