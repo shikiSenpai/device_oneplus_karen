@@ -26,19 +26,9 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 TARGET_FLATTEN_APEX := true
 
 # VNDK
-PRODUCT_EXTRA_VNDK_VERSIONS := 30
+PRODUCT_EXTRA_VNDK_VERSIONS := 31
 
-PRODUCT_SHIPPING_API_LEVEL := 30
-
-# Call proprietary blob setup
-$(call inherit-product-if-exists, vendor/oneplus/karen/karen-vendor.mk)
-$(call inherit-product-if-exists, vendor/mediatek/ims/mtk-ims.mk)
-
-# OneplusParts
-$(call inherit-product, packages/apps/OneplusParts/parts.mk)
-
-# OPlusExtras
-PRODUCT_PACKAGES += OPlusExtras
+PRODUCT_SHIPPING_API_LEVEL := 31
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -71,14 +61,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/privapp-permissions-camera-go.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-camera-go.xml
     
-# OnePlus File Manager & Gallery
-PRODUCT_PACKAGES += \
-    OPFiles \
-    OPGallery
-    
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/permissions/privapp-permissions-op-files.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-op-files.xml
-
 # Carrier Config Overlays
 PRODUCT_PACKAGES += \
     CarrierConfigOverlay
@@ -130,7 +112,6 @@ PRODUCT_PACKAGES += \
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
-    com.gsma.services.nfc  \
     NfcNci \
     SecureElement \
     Tag
@@ -206,9 +187,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
 
-# Udfps
-PRODUCT_PACKAGES += \
-    UdfpsResources
 
 # ViperFX
 PRODUCT_PACKAGES += \

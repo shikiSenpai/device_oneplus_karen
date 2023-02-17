@@ -21,8 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from device makefile
 $(call inherit-product, device/oneplus/karen/device.mk)
 
-# Inherit some common lineage X stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_karen
